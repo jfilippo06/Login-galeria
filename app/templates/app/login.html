@@ -2,7 +2,6 @@
 
 {% block container %}
     <div class="container-login">
-      <div>
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             {{form.username.label_tag}}
@@ -11,6 +10,5 @@
             {{form.password}}
             <input type="submit" value="Iniciar sesion">
         </form>
-      </div>
     </div>
 {% endblock %}
