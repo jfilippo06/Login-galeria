@@ -1,1 +1,11 @@
 {% extends 'app/plantilla.html' %}
+
+{% block container %}
+    <div class="container-index">
+        {% for data in data %}
+            <div>
+                <img src={{data.imagen.url}} alt="{{data.imagen}}">
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

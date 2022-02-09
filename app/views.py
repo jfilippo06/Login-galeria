@@ -1,4 +1,4 @@
-from django.http import HttpRequest
+from multiprocessing import context
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .forms import Send
@@ -6,15 +6,16 @@ from .models import *
 # Create your views here.
 
 def index(request):
-    return render(request,'app/index.html')
+    data = Post.objects.all()
+    context = {'data':data}
+    return render(request,'app/index.html',context)
 
 @login_required
 def admin(request):
     if request.method == 'POST':
-        form = Send(request.POST, request.FILES)
+        form = Send(request.FILES)
         if form.is_valid():
-            HttpRequest(request,request.user)
-
+            form.save()
             return redirect('admin-store')
     else:
         form = Send()
