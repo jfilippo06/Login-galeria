@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.http import HttpRequest
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+from .forms import Send
+from .models import *
 # Create your views here.
 
 def index(request):
@@ -7,4 +10,13 @@ def index(request):
 
 @login_required
 def admin(request):
-    return render(request,'app/admin.html')
+    if request.method == 'POST':
+        form = Send(request.POST, request.FILES)
+        if form.is_valid():
+            HttpRequest(request,request.user)
+
+            return redirect('admin-store')
+    else:
+        form = Send()
+    context = {'form':form}
+    return render(request,'app/admin.html',context)
