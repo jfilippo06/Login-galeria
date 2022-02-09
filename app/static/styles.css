@@ -16,6 +16,14 @@ nav{
     height: 10vh;
 }
 
+nav div{
+    display: flex;
+}
+
+nav div h1 a{
+    margin: 10px;
+}
+
 a{
     text-decoration: none;
     color: #fdfdfd;
