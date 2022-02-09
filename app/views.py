@@ -13,10 +13,10 @@ def index(request):
 @login_required
 def admin(request):
     if request.method == 'POST':
-        form = Send(request.FILES)
+        form = Send(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('admin-store')
+            return redirect('admin-galery')
     else:
         form = Send()
     context = {'form':form}
