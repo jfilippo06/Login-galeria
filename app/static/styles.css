@@ -24,7 +24,7 @@ nav div h1 a{
     margin: 10px;
 }
 
-a{
+.title{
     text-decoration: none;
     color: #fdfdfd;
     text-shadow: 3px 3px 2px #ff0000c7;
@@ -61,16 +61,24 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: auto;
     flex-wrap: wrap;
 }
 
 .container-index div{
     margin: 2% 2%;
+    display: flex;
+    flex-direction: column;
 }
 
 img{
     width: 350px;
     height: 350px;
     object-fit:cover;
+}
+
+.container-admin{
+    display:flex;
+    justify-content: center;
+    margin: 1% auto;
 }

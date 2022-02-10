@@ -1,11 +1,21 @@
 {% extends 'app/plantilla.html' %}
 
 {% block container %}
-    <div class="">
+    <div class="container-admin">
         <form action="{% url 'admin-galery' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{form}}
             <input type="submit" value="Enviar">
+            <button><a href="{% url 'admin-galery' %}">Cancelar</a></button>
         </form>
+    </div>
+    <div class="container-index">
+        {% for data in data %}
+            <div>
+                <img src={{data.imagen.url}} alt="{{data.imagen}}">
+                <button><a href="{% url 'editar' data.id %}" class="title">Editar</a></button>
+                <button><a href="{% url 'eliminar' data.id %}" class="title">Eliminar</a></button>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
