@@ -18,7 +18,7 @@ def admin(request):
             return redirect('admin-galery')
     else:
         form = Send()
-        data = Post.objects.all()
+    data = Post.objects.all()
     context = {'form':form,'data':data}
     return render(request,'app/admin.html',context)
 
@@ -32,7 +32,7 @@ def editar(request,id):
             return redirect('admin-galery')
     else:
         form = Send(instance=id_imagen)
-        data = Post.objects.all()
+    data = Post.objects.all()
     context = {'form':form,'data':data}
     return render(request,'app/admin.html',context)
 
